@@ -1,2 +1,26 @@
-# Workflow_CI_Zalfa-Noor-Rana-Santoso
-Repository ini merupakan lanjutan dari proyek Eksperimen Sistem Machine Learning (MSML) Dicoding. Berisi implementasi Workflow CI menggunakan MLflow Project dan GitHub Actions untuk melakukan re-training model machine learning secara otomatis, menyimpan artefak hasil pelatihan, serta membangun Docker image sebagai bagian dari proses MLOps.
+# Workflow CI - MLflow Training
+
+Repository ini merupakan lanjutan dari eksperimen sistem machine learning (SML).
+Workflow CI dibuat menggunakan GitHub Actions dan MLflow Project untuk melakukan
+retraining model secara otomatis setiap terjadi push ke branch main.
+
+## Struktur
+- MLProject/
+  - modelling.py
+  - MLproject
+  - conda.yaml
+  - titanic_preprocessing/
+- .github/workflows/ci.yml
+
+## Workflow
+- Trigger: push ke main
+- Proses:
+  - Setup Python
+  - Install dependency
+  - Jalankan `mlflow run`
+  - Simpan artefak hasil training
+
+## Tools
+- MLflow
+- Scikit-learn
+- GitHub Actions
