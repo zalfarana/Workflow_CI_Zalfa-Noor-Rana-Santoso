@@ -1,0 +1,9 @@
+name: titanic-mlflow-project
+
+conda_env: conda.yaml
+
+entry_points:
+  main:
+    parameters:
+      max_iter: {type: int, default: 1000}
+    command: "python modelling.py --max_iter {max_iter}"
