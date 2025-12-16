@@ -15,6 +15,7 @@ X_test  = pd.read_csv("titanic_preprocessing/X_test_processed.csv")
 y_train = pd.read_csv("titanic_preprocessing/y_train.csv").squeeze()
 y_test  = pd.read_csv("titanic_preprocessing/y_test.csv").squeeze()
 
+
 mlflow.sklearn.autolog()
 
 with mlflow.start_run():
