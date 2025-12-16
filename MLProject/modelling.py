@@ -1,3 +1,4 @@
+import argparse
 import pandas as pd
 import mlflow
 import mlflow.sklearn
@@ -5,7 +6,9 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import accuracy_score
 
 def main():
-    print("Loading data...")
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--max_iter", type=int, default=1000)
+    args = parser.parse_args()
 
     X_train = pd.read_csv("titanic_preprocessing/X_train_processed.csv")
     X_test  = pd.read_csv("titanic_preprocessing/X_test_processed.csv")
@@ -15,7 +18,7 @@ def main():
     mlflow.sklearn.autolog()
 
     with mlflow.start_run():
-        model = LogisticRegression(max_iter=1000)
+        model = LogisticRegression(max_iter=args.max_iter)
         model.fit(X_train, y_train)
 
         preds = model.predict(X_test)
