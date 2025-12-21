@@ -26,6 +26,10 @@ jobs:
     - name: Run MLflow Project
       run: |
         cd MLProject
+
+        mlflow experiments create --experiment-name ci_experiment || true
+        export MLFLOW_EXPERIMENT_NAME=ci_experiment
+
         mlflow run . --env-manager=local
 
     - name: Upload MLflow artifacts
