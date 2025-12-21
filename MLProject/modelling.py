@@ -15,17 +15,17 @@ def main():
     y_train = pd.read_csv("titanic_preprocessing/y_train.csv").squeeze()
     y_test  = pd.read_csv("titanic_preprocessing/y_test.csv").squeeze()
 
+    # AUTLOG saja, jangan start_run manual
     mlflow.sklearn.autolog()
 
-    with mlflow.start_run():
-        model = LogisticRegression(max_iter=args.max_iter)
-        model.fit(X_train, y_train)
+    model = LogisticRegression(max_iter=args.max_iter)
+    model.fit(X_train, y_train)
 
-        preds = model.predict(X_test)
-        acc = accuracy_score(y_test, preds)
+    preds = model.predict(X_test)
+    acc = accuracy_score(y_test, preds)
 
-        mlflow.log_metric("accuracy", acc)
-        print("Accuracy:", acc)
+    mlflow.log_metric("accuracy", acc)
+    print("Accuracy:", acc)
 
 if __name__ == "__main__":
     main()
